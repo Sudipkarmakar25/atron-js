@@ -1,0 +1,52 @@
+{
+  "name": "atron-js",
+  "version": "1.1.0",
+  "description": "Utility functions for JavaScript/TypeScript to work with strings, numbers, and time.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist-cjs/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "dist-cjs"
+  ],
+  "scripts": {
+    "test": "tsx --test tests/**/*.test.ts",
+    "build": "tsc && tsc -p tsconfig.cjs.json",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "keywords": [
+    "utility",
+    "utilities",
+    "utils",
+    "helper",
+    "helpers",
+    "string",
+    "string-utils",
+    "number",
+    "math",
+    "time",
+    "date",
+    "javascript",
+    "typescript",
+    "ts",
+    "node",
+    "esm"
+  ],
+  "author": "parthik jadav",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
