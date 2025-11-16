@@ -481,20 +481,10 @@ Requirements:
 
 ---
 
-## Building & publishing (for maintainers)
+## Contributing
 
-Build the TypeScript source into `dist/`:
-
-```bash
-npm run build
-```
-
-Publish to npm (requires an npm account and correct permissions):
-
-```bash
-npm login
-npm publish
-```
+Contributions are welcome! Please read the [contribution guide](./CONTRIBUTING.md)
+for details on setup, testing, and proposing changes.
 
 ---
 
