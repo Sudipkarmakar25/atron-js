@@ -488,6 +488,33 @@ reverse("hello world");       // "dlrow olleh"
 
 ---
 
+#### `camelCase(text: string): string`
+
+Converts a string into camelCase.
+
+```ts
+camelCase("hello world");        // "helloWorld"
+camelCase("hello-world_test");   // "helloWorldTest"
+camelCase("--Hello WORLD--");    // "helloWorld"
+camelCase("version-2-update");   // "version2Update"
+```
+
+---
+
+#### `kebabCase(text: string): string`
+
+Converts a string into kebab-case.
+
+```ts
+kebabCase("hello world");            // "hello-world"
+kebabCase("helloWorld");             // "hello-world"
+kebabCase("XMLHttpRequest");         // "xml-http-request"
+kebabCase("ver1Test2");              // "ver1-test2"
+kebabCase("--héllo Wørld--");        // "héllo-wørld"
+```
+
+---
+
 #### `isEmpty(text: string): boolean`
 
 Checks if a string is **empty** or contains **only whitespace**.
@@ -502,6 +529,33 @@ isEmpty("  hello  ");         // false
 
 **How it works:**
 - If `text` is falsy or `text.trim().length === 0`, it returns `true`.
+
+---
+
+#### `toSlug(text: string, options?: ToSlugOptions): string`
+
+Convert arbitrary text into a URL/path-friendly slug.
+
+```ts
+import { toSlug } from "atron-js";
+
+toSlug("Hello World");                          // "hello-world"
+toSlug("École", { removeDiacritics: true });    // "ecole"
+toSlug("Привет мир", { allowUnicode: true });   // "привет-мир"
+toSlug("$%#", { fallback: "n-a" });            // "n-a"
+toSlug("Hello World", { separator: "_" });     // "hello_world"
+toSlug("Hello World", { lowercase: false });    // "Hello-World"
+toSlug("abcdef ghi", { maxLength: 5 });         // "abcde"
+```
+
+`ToSlugOptions`:
+
+- `separator?: string` – character used between words (default `"-"`).
+- `lowercase?: boolean` – lowercases the slug when `true` (default `true`).
+- `removeDiacritics?: boolean` – strip accents/diacritics when `true` (default `true`).
+- `maxLength?: number` – optional max length; trailing separators are trimmed after truncation.
+- `allowUnicode?: boolean` – when `true`, keep non-Latin letters instead of removing them (default `false`).
+- `fallback?: string` – value to return if the slug would otherwise be empty (default `""`).
 
 ---
 
