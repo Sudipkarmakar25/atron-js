@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { sequence } from "../../src/fetch";
+import { sequence } from "../../src";
 
 test("sequence runs tasks in order and collects results", async () => {
   const tasks = Array.from({ length: 10 }, (_, i) => () => Promise.resolve(i + 1));
@@ -44,11 +44,11 @@ test("sequence runs only one task at a time", async () => {
   const tasks = Array.from({ length: 20 }, () => async () => {
     active++;
     maxActive = Math.max(maxActive, active);
-    await new Promise<void>(resolve => setTimeout(resolve, 2));
+    await new Promise<void>((resolve) => setTimeout(resolve, 2));
     active--;
     return active;
   });
 
-  await sequence(tasks.map(t => () => t()));
+  await sequence(tasks.map((t) => () => t()));
   assert.equal(maxActive, 1);
 });
